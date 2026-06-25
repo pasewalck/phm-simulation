@@ -85,7 +85,7 @@ new Plot(visuals2, (plot) => {
   mathHeight: 4,
   canvasHeight: 200,
   mathWidth: 10,
-  gridStepY: 10,
+  gridStepY: 1,
 })
 
 new Plot(visuals3, (plot) => {
