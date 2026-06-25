@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.katex-html {
+  display: none;
+}
+
+.p5Canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.gx-slider-wrapper {
+  @apply flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 py-1.5 px-2 rounded-lg transition-colors;
+}
+
+.gx-slider-wrapper:hover {
+  @apply sm:bg-black/5;
+}
+
+.gx-slider-label {
+  @apply text-sm text-black/60 whitespace-nowrap min-w-[80px] select-none;
+}
+
+.gx-slider-value {
+  @apply text-black/80 font-medium tabular-nums min-w-[36px] text-right;
+}
+
+.gx-slider-input {
+  @apply flex-1 cursor-pointer h-1.5 appearance-none rounded-full bg-black/10 outline-none transition-all;
+}
+
+.gx-slider-input::-webkit-slider-runnable-track {
+  @apply h-1.5 rounded-full bg-black/10;
+}
+
+.gx-slider-input::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 rounded-full border-none bg-blue-500 shadow-sm cursor-pointer mt-[-5px] transition-transform;
+}
+
+
+.gx-slider-input::-moz-range-track {
+  @apply h-1.5 rounded-full bg-black/10;
+}
+
+.gx-slider-input::-moz-range-thumb {
+  @apply w-4 h-4 rounded-full bg-blue-500 shadow-sm cursor-pointer;
+}
+
+.gx-slider-input:focus-visible {
+  @apply ring-2 ring-blue-300;
+}
+
+.gx-slider-input:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.gx-slider-input:disabled::-webkit-slider-thumb {
+  @apply cursor-not-allowed;
+}
+
+.gx-slider-input:disabled::-moz-range-thumb {
+  @apply cursor-not-allowed;
+}
+
+.gx-sliders-container {
+  @apply flex flex-col gap-1;
+}
+
+.gx-dropdown-wrapper {
+  @apply flex items-center gap-3 py-1.5 px-2 rounded-lg transition-colors;
+}
+
+.gx-dropdown-wrapper:hover {
+  @apply sm:bg-black/5;
+}
+
+.gx-dropdown-label {
+  @apply text-sm text-black/60 whitespace-nowrap select-none;
+}
+
+.gx-dropdown-select {
+  @apply flex-1 text-sm px-2 py-1.5 rounded-lg border border-black/20 bg-white text-black/80 cursor-pointer outline-none transition-all appearance-none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-size: 1.25rem;
+  background-repeat: no-repeat;
+  padding-right: 2rem;
+}
+
+.gx-dropdown-select:focus-visible {
+  @apply ring-2 ring-blue-300 border-blue-500;
+}
+
+.gx-dropdown-select:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.gx-latex-display {
+  @apply mx-2 mb-2 bg-black/5 border border-black/10 flex justify-between gap-3 p-3 rounded-lg;
+}
+
+
+.gx-latex-display-content {
+  @apply text-sm flex-1 min-w-0 overflow-auto;
+}
+
+.gx-latex-display-copy {
+  @apply text-sm flex-none ml-auto px-2.5 py-1 leading-none rounded-md border border-black/10 bg-white;
+}
+
+.gx-latex-display-copy:active {
+  @apply scale-105 bg-slate-100
+}
+
+.gx-latex-display .katex {
+  @apply text-sm;
+}
