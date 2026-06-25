@@ -37,7 +37,7 @@ See the result below for a sawtooth function:
 
 <img width="502" height="507" alt="image" src="https://github.com/user-attachments/assets/597fd08a-cfd7-4c71-9c73-09b0874daace" />
 
-Also, the further I visualize the coefficients magnitude, the further I draw the full Fourier series for all calculated coefficients. See the result below for a sawtooth function:
+Also further, I visualize the coefficients magnitude. Moreover, I draw the full Fourier series for all calculated coefficients. See the result below for a sawtooth function:
 
 <img width="503" height="294" alt="image" src="https://github.com/user-attachments/assets/0fd9b7a9-3576-4393-b3e9-b5476b67e7fa" />
 
