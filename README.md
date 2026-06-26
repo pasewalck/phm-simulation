@@ -20,8 +20,6 @@ var counter = 0
 for (var t = 0; t >= - 2 * Math.PI; t -= step) {
     const realPart = Math.cos(t * n) * fn(t)
     const imaginaryPart = Math.sin(t * n) * fn(t)
-    realParts.push(realPart)
-    imaginaryParts.push(imaginaryPart)
     realPartSum += realPart
     imaginaryPartSum += imaginaryPart
     counter++
