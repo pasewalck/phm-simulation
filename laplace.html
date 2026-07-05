@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veranschaulichung des Laplace Operators</title>
+  <script defer type="module" src="/src/laplace-sketch.ts"></script>
+  <style>
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="m-0 min-h-screen bg-slate-100 flex justify-center items-center">
+
+  <div class="flex flex-col max-w-2xl justify-center items-start sm:p-6 sm:pb-0">
+
+    <div id="graph2" class="bg-white backdrop-blur-md p-4 pb-0 border-white/[0.06] sm:rounded-lg w-[100%]">
+      <h1 class="text-black text-[25px] mb-2 select-none text-center">
+        Veranschaulichung des Laplace Operators
+      </h1>
+      <div id="g2-inputs" class="flex flex-col gap-4"></div>
+      <div id="g2-visuals" class="flex flex-col">
+        <div class="text-black text-[16px] mt-4 select-none text-center">
+          Uhrspüngliches Skalarfeld
+        </div>
+        <div id="g2-visuals-1"></div>
+        <div class="text-black text-[16px] mt-4 select-none text-center">
+          Gradienten-Feld
+        </div>
+        <div id="g2-visuals-2"></div>
+        <div class="text-black text-[16px] mt-4 select-none text-center">
+          Laplace-Feld
+        </div>
+        <div id="g2-visuals-3"></div>
+      </div>
+
+
+
+    </div>
+
+    <footer class="flex items-center justify-center w-full p-5">
+      <div class="text-slate-800 text-[14px] select-none text-center"><a
+          href="https://github.com/pasewalck/phm-simulation" class="hover:text-slate-900">Source Code</a> |
+        ©Pasewalck</div>
+    </footer>
+  </div>
+
+</body>
+
+</html>

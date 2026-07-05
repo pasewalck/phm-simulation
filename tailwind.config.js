@@ -2,6 +2,7 @@
 export default {
   content: [
     "./index.html",
+    "./laplace.html",
     "./src/**/*.{ts,js}",
   ],
   theme: {
