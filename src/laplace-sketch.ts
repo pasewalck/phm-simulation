@@ -30,7 +30,7 @@ fnDropdown.onChange((preset) => {
 })
 
 
-new Plot(visuals1, (plot, time) => {
+new Plot(visuals1, (plot) => {
   plot.drawScalerfield(fnDropdown.selected.scalerFieldFunction, { step: 0.5 })
 
 }, {
@@ -39,7 +39,7 @@ new Plot(visuals1, (plot, time) => {
   gridStep: 0.5,
 })
 
-new Plot(visuals2, (plot, time) => {
+new Plot(visuals2, (plot) => {
   plot.drawVectorfield(fnDropdown.selected.gradientFieldFunction, { step: 0.5 })
 
 }, {
@@ -48,7 +48,7 @@ new Plot(visuals2, (plot, time) => {
   gridStep: 0.5,
 })
 
-new Plot(visuals3, (plot, time) => {
+new Plot(visuals3, (plot) => {
   plot.drawScalerfield(fnDropdown.selected.laplaceFieldFunction, { step: 0.5 })
 
 }, {

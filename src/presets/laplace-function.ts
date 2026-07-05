@@ -26,7 +26,7 @@ export const laplaceFunctionPresets: LaplaceFunctionPreset[] = [
         gradientFieldFunction: (vec: Vector2d): Vector2d => {
             return new Vector2d(2 * vec.x, 2 * vec.y)
         },
-        laplaceFieldFunction: (vec: Vector2d): number => {
+        laplaceFieldFunction: (): number => {
             return 4
         }
     },
@@ -53,10 +53,10 @@ export const laplaceFunctionPresets: LaplaceFunctionPreset[] = [
         scalerFieldFunction: (vec: Vector2d): number => {
             return (vec.x - 10)
         },
-        gradientFieldFunction: (vec: Vector2d): Vector2d => {
+        gradientFieldFunction: (): Vector2d => {
             return new Vector2d(1, 0)
         },
-        laplaceFieldFunction: (vec: Vector2d): number => {
+        laplaceFieldFunction: (): number => {
             return 0
         }
     },
