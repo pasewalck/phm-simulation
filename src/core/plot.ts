@@ -8,6 +8,7 @@ export interface PlotOptions {
   mathHeight?: number
   xOffset?: number
   yOffset?: number
+  grid?: boolean
   gridStep?: number
   gridStepX?: number
   gridStepY?: number
@@ -92,7 +93,8 @@ export class Plot {
       p.draw = () => {
         this.time += 1.0 / this.frameRate()
         p.background(255);
-        this.drawGrid(gridStep, gridStepX, gridStepY)
+        if (grid)
+          this.drawGrid(gridStep, gridStepX, gridStepY)
         draw(this, this.time)
       }
     })
