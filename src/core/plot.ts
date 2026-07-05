@@ -1,4 +1,5 @@
 import p5 from 'p5'
+import { Vector2d } from './vector2d'
 
 export interface PlotOptions {
   canvasWidth?: number
@@ -38,6 +39,17 @@ export interface FunctionOptions {
   pointSize?: number
 }
 
+export interface VectorFieldOptions {
+  color?: p5.Color
+  step?: number
+}
+
+export interface ScalarFieldOptions {
+  color?: p5.Color
+  step?: number
+  size?: number
+}
+
 export interface ParametricOptions {
   color?: p5.Color
   weight?: number
@@ -71,7 +83,7 @@ export class Plot {
   constructor(
     canvasContainer: string | HTMLElement,
     draw: DrawCallback = () => { },
-    { canvasWidth = 500, canvasHeight = 500, margin = 10, mathWidth = 10, mathHeight = 10, xOffset = 0, yOffset = 0, gridStep = 1, gridStepX = undefined, gridStepY = undefined }: PlotOptions = {}
+    { canvasWidth = 500, canvasHeight = 500, margin = 10, mathWidth = 10, mathHeight = 10, xOffset = 0, yOffset = 0, grid = true, gridStep = 1, gridStepX = undefined, gridStepY = undefined }: PlotOptions = {}
   ) {
     this.width = canvasWidth
     this.height = canvasHeight
@@ -273,6 +285,81 @@ export class Plot {
       }
     }
     this.p.endShape()
+  }
+
+  drawScalerfield(fieldFn: (vec: Vector2d) => number, options: ScalarFieldOptions = {}): void {
+
+    const defaults: ScalarFieldOptions = {
+      color: this.p.color(0, 0, 255),
+      step: 1,
+      size: 10
+    }
+
+    const opts = { ...defaults, ...options }
+
+
+    this.p.fill(opts.color!)
+    this.p.noStroke()
+
+    var max = 0
+    var min = 0
+
+    for (let x = this.xMin; x <= this.xMax; x += opts.step!) {
+      for (let y = this.yMin; y <= this.yMax; y += opts.step!) {
+        const f = fieldFn(new Vector2d(x, y))
+        max = Math.max(max, f)
+        min = Math.min(min, f)
+      }
+    }
+
+    const mag = (max - min)
+
+    for (let x = this.xMin; x <= this.xMax; x += opts.step!) {
+      for (let y = this.yMin; y <= this.yMax; y += opts.step!) {
+        const f = fieldFn(new Vector2d(x, y))
+        const screen = this.toScreen(x, y)
+        const v = (0.5 + ((f - min) / mag) * 0.5)
+        this.p.circle(screen.x, screen.y, opts.size! * v)
+      }
+    }
+  }
+
+  drawVectorfield(fieldFn: (vec: Vector2d) => Vector2d, options: VectorFieldOptions = {}): void {
+
+    const defaults: VectorFieldOptions = {
+      color: this.p.color(0, 0, 255),
+      step: 1
+    }
+
+    const opts = { ...defaults, ...options }
+
+    this.p.strokeWeight(1)
+    this.p.stroke(opts.color!)
+
+    var maxMag = 0
+
+    for (let x = this.xMin; x <= this.xMax; x += opts.step!) {
+      for (let y = this.yMin; y <= this.yMax; y += opts.step!) {
+        const F = fieldFn(new Vector2d(x, y))
+        maxMag = Math.max(maxMag, F.magnetude)
+      }
+    }
+
+    for (let x = this.xMin; x <= this.xMax; x += opts.step!) {
+      for (let y = this.yMin; y <= this.yMax; y += opts.step!) {
+        const F = fieldFn(new Vector2d(x, y))
+        const screen = this.toScreen(x, y)
+        const l = ((0.5 + ((F.magnetude / maxMag) * 0.9) * 0.5) * opts.step!) / F.magnetude
+        const screenEnd0 = this.toScreen(x + F.x * l, y + F.y * l)
+        const screenEnd1 = this.toScreen(x + F.x * l + F.turn(Math.PI * 0.8).norm.x * 0.1, y + F.y * l + F.turn(Math.PI * 0.8).norm.y * 0.1)
+        const screenEnd2 = this.toScreen(x + F.x * l + F.turn(-Math.PI * 0.8).norm.x * 0.1, y + F.y * l + F.turn(-Math.PI * 0.8).norm.y * 0.1)
+
+        this.p.line(screen.x, screen.y, screenEnd0.x, screenEnd0.y)
+        this.p.line(screenEnd0.x, screenEnd0.y, screenEnd1.x, screenEnd1.y)
+        this.p.line(screenEnd0.x, screenEnd0.y, screenEnd2.x, screenEnd2.y)
+
+      }
+    }
   }
 
   drawFunction(fn: (x: number) => number, options: FunctionOptions = {}): void {
