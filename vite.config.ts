@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: 'index.html',
         laplace: 'laplace.html',
+        taylor: 'taylor.html',
       },
     },
   }
