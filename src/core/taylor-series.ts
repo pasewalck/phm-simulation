@@ -30,7 +30,7 @@ function binom(n: number, k: number): number {
   return fact(n) / (fact(k) * fact(n - k))
 }
 
-async function nthDerivative(fn: MathFunction, n: number, x0: number, h = 0.5): Promise<number> {
+async function nthDerivative(fn: MathFunction, n: number, x0: number, h = 0.1): Promise<number> {
   var sum = 0;
   const mid = n / 2;
   for (let k = 0; k <= n; k++) {
