@@ -9,17 +9,31 @@ export interface TaylorFunctionPreset {
 
 export const taylorFunctionPresets: TaylorFunctionPreset[] = [
     {
-        name: 'Beispiel 1',
-        latex: 'f(x) = x^2',
+        name: 'e-Funktion',
+        latex: 'f(x) = e^x',
         fn: (x: number): number => {
-            return x ** 2
+            return Math.E ** x
         }
     },
     {
-        name: 'Beispiel 2',
+        name: 'Kosinus',
+        latex: 'f(x) = cos(x)',
+        fn: (x: number): number => {
+            return Math.cos(x)
+        }
+    },
+    {
+        name: 'Sinus',
         latex: 'f(x) = sin(x)',
         fn: (x: number): number => {
             return Math.sin(x)
+        }
+    },
+    {
+        name: 'Arkussinus',
+        latex: 'f(x) = sin^{-1}(x)',
+        fn: (x: number): number => {
+            return Math.asin(x)
         }
     },
 ];
