@@ -11,12 +11,21 @@
 
 <body class="m-0 min-h-screen bg-slate-100 flex justify-center items-center">
 
-    <div class="flex flex-col max-w-2xl justify-center items-start sm:p-6 sm:pb-0">
+    <div class="flex flex-col max-w-3xl justify-center items-start sm:p-6 sm:pb-0">
 
-        <div id="graph2" class="bg-white backdrop-blur-md p-4 pb-0 border-white/[0.06] sm:rounded-lg w-[100%]">
+        <div id="graph2" class="bg-white backdrop-blur-md p-6 border-white/[0.06] sm:rounded-lg w-[100%]">
             <h1 class="text-black text-[25px] mb-2 select-none text-center">
                 Veranschaulichungen
             </h1>
+            <div class="flex flex-col gap-2 mt-4 mb-4">
+                <a href="fourier.html"
+                    class="block bg-slate-50 border border-slate-200 rounded-lg p-4 text-center text-black text-[16px] hover:bg-blue-50 hover:border-blue-300 transition-colors">Fourier-Reihe</a>
+                <a href="laplace.html"
+                    class="block bg-slate-50 border border-slate-200 rounded-lg p-4 text-center text-black text-[16px] hover:bg-blue-50 hover:border-blue-300 transition-colors">Laplace
+                    Operator</a>
+                <a href="taylor.html"
+                    class="block bg-slate-50 border border-slate-200 rounded-lg p-4 text-center text-black text-[16px] hover:bg-blue-50 hover:border-blue-300 transition-colors">Taylor-Reihe</a>
+            </div>
         </div>
 
         <footer class="flex items-center justify-center w-full p-5">
