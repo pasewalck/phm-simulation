@@ -33,8 +33,14 @@ const calc = async () => {
   folgenTiefe.disabled = true
   x0Slider.disabled = true
   taylorCoefficients = []
-  await calcCoefficients(fnDropdown.selected.fn, folgenTiefe.value, x0Slider.value, taylorCoefficients,)
-  x0Slider.disabled = false
+
+  if (fnDropdown.selected.forceDevelopmentPoint != undefined)
+    x0Slider.setValueSilent(fnDropdown.selected.forceDevelopmentPoint)
+
+  await calcCoefficients(fnDropdown.selected.fn, folgenTiefe.value, x0Slider.value, taylorCoefficients)
+
+  if (fnDropdown.selected.forceDevelopmentPoint == undefined)
+    x0Slider.disabled = false
   fnDropdown.disabled = false
   folgenTiefe.disabled = false
 }

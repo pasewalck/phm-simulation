@@ -78,6 +78,12 @@ export class Slider {
     this.events.emit('change', this._value)
   }
 
+  setValueSilent(v: number) {
+    this._value = v
+    this.input.value = String(v)
+    this.valueDisplay.textContent = String(v)
+  }
+
   onInput(cb: (value: number) => void): this {
     this.events.on('input', cb);
     return this
