@@ -1,6 +1,6 @@
 While studying for my exams at TU Berlin, after seeing [this Video](https://www.youtube.com/watch?v=spUNpyF58BY) by 3Blue1Brown, I was inspired to recreate the animations shown there.
 
-See a [demo here](https://pasewalck.github.io/phm-simulation-dist/)! But I'd really recommend to check out the video by 3Blue1Brown first to better understand what my approach here is and also to support their amazing work!
+See a [demo here](https://pasewalck.github.io/phm-simulation-dist/projects/fourier/)! But I'd really recommend to check out the video by 3Blue1Brown first to better understand what my approach here is and also to support their amazing work!
 
 I use the following formula for the Fourier series:
 
@@ -29,7 +29,7 @@ var realPart = realPartSum / counter
 var imaginaryPart = imaginaryPartSum / counter
 ```
 
-This calculation can then be visualized (in steps) in the complex plane. After doing some research on JavaScript libraries that would work well I quickly ended up using [p5.js](https://p5js.org/). I ended up setting somewhat universal code for rendering different types of plots with animations and plan on using it for further visualisations in the future.
+This calculation can then be visualized (in steps) in the complex plane.
 
 See the result below for a sawtooth function:
 
@@ -38,5 +38,3 @@ See the result below for a sawtooth function:
 Also further, I visualize the coefficients magnitude. Moreover, I draw the full Fourier series for all calculated coefficients. See the result below for a sawtooth function:
 
 <img width="503" height="294" alt="image" src="https://github.com/user-attachments/assets/0fd9b7a9-3576-4393-b3e9-b5476b67e7fa" />
-
-At the time being, the UI is in German, but if I ever get to it, I will translate it.
