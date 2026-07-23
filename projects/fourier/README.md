@@ -6,7 +6,7 @@ I use the following formula for the Fourier series:
 
 $$f(t) = \sum_{n=-\infty}^{\infty} c_n e^{i\omega_n t}$$
 
-with $c_n = \dfrac{1}{T} \int_{0}^{T} f(t) e^{i\omega_n t}$ and $\omega_n = n \dfrac{2 \pi}{T}$.
+with $c_n = \dfrac{1}{T} \int_{0}^{T} f(t) e^{i\omega_n t} dt$ and $\omega_n = n \dfrac{2 \pi}{T}$.
 
 For my calculations, I keep $T = 2 \pi$ to simplify things. Also, I only calculate the coefficients from n = -20 to 20 (optionally more) as my approach is a numerical approach, which has its limits.
 
