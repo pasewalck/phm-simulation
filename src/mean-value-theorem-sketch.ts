@@ -38,7 +38,7 @@ const bSlider = new Slider(inputs, {
   }
 })
 
-const getPointsOfValue = async (fnDerivative: Function, a: number, b: number, s: number, depth = 40): Promise<number> => {
+const getPointsOfValue = async (fnDerivative: Function, a: number, b: number, s: number, depth = 10): Promise<number> => {
   let step = (b - a)
   let c = a + step / 2
   if (fnDerivative(c) == s || depth == 0)
