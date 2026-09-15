@@ -151,8 +151,8 @@ export class Plot {
   }
 
   drawGrid(gridStep: number = 1, gridStepX: any = undefined, gridStepY: any = undefined): void {
-    const gridWeight = 1
-    const axisWeight = 2
+    const gridWeight = 0.5
+    const axisWeight = 1
     const labelSize = 10
     gridStepX = gridStepX != undefined ? gridStepX : gridStep
     gridStepY = gridStepY != undefined ? gridStepY : gridStep
@@ -171,7 +171,7 @@ export class Plot {
     }
 
     this.p.strokeWeight(axisWeight)
-    this.p.stroke(this.p.color(10, 10, 10))
+    this.p.stroke(this.p.color(5, 5, 5))
 
     const yZero = this.toScreenY(0)
     this.p.line(this.margin, yZero, this.width - this.margin, yZero)
