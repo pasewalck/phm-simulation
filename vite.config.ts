@@ -15,6 +15,7 @@ export default defineConfig({
         fourier: 'projects/fourier/index.html',
         laplace: 'projects/laplace/index.html',
         taylor: 'projects/taylor/index.html',
+        meanValueTheorem: 'projects/mean-value-theorem/index.html',
       },
     },
   },
