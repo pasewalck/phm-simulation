@@ -4,15 +4,18 @@ export interface SliderOptions {
   label: string
   min: number
   max: number
+  dynamicClamp?: Function
   step: number
   default: number
 }
 
 export class Slider {
   private _value: number
+  private options: SliderOptions
   private wrapper: HTMLDivElement
   private input: HTMLInputElement
   private valueDisplay: HTMLSpanElement
+  private displayDecimals: number
 
   private events = new EventEmitter<{
     input: [value: number]
@@ -21,36 +24,45 @@ export class Slider {
 
   constructor(parent: HTMLElement, options: SliderOptions) {
     this._value = options.default
+    this.options = options
+
+    this.displayDecimals = options.step.toString().includes(".") ? options.step.toString().split(".")[1].length : 0
 
     this.wrapper = document.createElement('div')
     this.wrapper.className = 'gx-slider-wrapper'
 
     const label = document.createElement('span')
     label.className = 'gx-slider-label'
-    label.textContent = options.label + ' '
+    label.textContent = this.options.label + ' '
 
     this.valueDisplay = document.createElement('span')
     this.valueDisplay.className = 'gx-slider-value'
-    this.valueDisplay.textContent = String(options.default)
+    this.valueDisplay.textContent = this.options.default.toFixed(this.displayDecimals)
     label.appendChild(this.valueDisplay)
 
     this.input = document.createElement('input')
     this.input.type = 'range'
     this.input.className = 'gx-slider-input'
-    this.input.min = String(options.min)
-    this.input.max = String(options.max)
-    this.input.step = String(options.step)
-    this.input.value = String(options.default)
+    this.input.min = String(this.options.min)
+    this.input.max = String(this.options.max)
+    this.input.step = String(this.options.step)
+    this.input.value = String(this.options.default)
 
     this.input.addEventListener('input', () => {
-      this._value = parseFloat(this.input.value)
-      this.valueDisplay.textContent = String(this._value)
+      const v = parseFloat(this.input.value)
+      this._value = this.options.dynamicClamp ? this.options.dynamicClamp(v) : v
+      if (v != this._value)
+        this.input.value = String(this._value)
+      this.valueDisplay.textContent = this._value.toFixed(this.displayDecimals)
       this.events.emit('input', this._value)
     })
 
     this.input.addEventListener('change', () => {
-      this._value = parseFloat(this.input.value)
-      this.valueDisplay.textContent = String(this._value)
+      const v = parseFloat(this.input.value)
+      this._value = this.options.dynamicClamp ? this.options.dynamicClamp(v) : v
+      if (v != this._value)
+        this.input.value = String(this._value)
+      this.valueDisplay.textContent = this._value.toFixed(this.displayDecimals)
       this.events.emit('change', this._value)
     })
 
@@ -74,14 +86,14 @@ export class Slider {
   set value(v: number) {
     this._value = v
     this.input.value = String(v)
-    this.valueDisplay.textContent = String(v)
+    this.valueDisplay.textContent = this._value.toFixed(this.displayDecimals)
     this.events.emit('change', this._value)
   }
 
   setValueSilent(v: number) {
     this._value = v
     this.input.value = String(v)
-    this.valueDisplay.textContent = String(v)
+    this.valueDisplay.textContent = this._value.toFixed(this.displayDecimals)
   }
 
   onInput(cb: (value: number) => void): this {
