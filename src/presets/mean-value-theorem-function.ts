@@ -6,7 +6,7 @@ export interface MeanValueTheoremFunctionPreset {
     latex: string
     fn: MathFunction
     fnDerivative: MathFunction
-    fnDerivativeInverse: MathFunction
+    fnDerivativeInverse?: MathFunction
 }
 
 export const meanValueTheoremFunctionPresets: MeanValueTheoremFunctionPreset[] = [
@@ -48,5 +48,15 @@ export const meanValueTheoremFunctionPresets: MeanValueTheoremFunctionPreset[] =
         fnDerivativeInverse: (x: number): number => {
             return Math.acos(x * 4)
         },
+    },
+    {
+        name: 'Polynom',
+        latex: 'f(x) = \\frac{1}{2}x^3 + x',
+        fn: (x: number): number => {
+            return 0.5 * (x ** 3) + x
+        },
+        fnDerivative: (x: number): number => {
+            return 1.5 * (x ** 2) + 1
+        }
     }
 ];
