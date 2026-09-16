@@ -26,7 +26,7 @@ fnDropdown.onChange((preset) => {
 })
 
 const x0Slider = new Slider(inputs, { label: 'Entwickungspunkt', min: -3, max: 3, step: 0.5, default: 0 })
-const folgenTiefe = new Slider(inputs, { label: 'Tiefe', min: 2, max: 6, step: 1, default: 2 })
+const folgenTiefe = new Slider(inputs, { label: 'Grad der Approximation', min: 2, max: 6, step: 1, default: 2 })
 
 const calc = async () => {
   fnDropdown.disabled = true

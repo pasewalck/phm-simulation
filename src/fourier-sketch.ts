@@ -22,7 +22,7 @@ const fnDropdown = new Dropdown(inputs, {
 })
 const qualityDropdown = new Dropdown(inputs, {
   presets: quiltyPresets,
-  label: 'Qualität',
+  label: 'Integrationsgenauigkeit',
   default: 1,
   itemLabel: (p) => p.name,
 })
