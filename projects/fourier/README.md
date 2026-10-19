@@ -4,7 +4,7 @@ See a [demo here](https://pasewalck.github.io/phm-simulation-dist/projects/fouri
 
 I use the following formula for the Fourier series:
 
-$$f(t) = \sum_{n=-\infty}^{\infty} c_n e^{i\omega_n t}$$
+$$f(t) = \sum_{n=-\infty}^{\infty} c_n$$
 
 with $c_n = \dfrac{1}{T} \int_{0}^{T} f(t) e^{-i\omega_n t} dt$ and $\omega_n = n \dfrac{2 \pi}{T}$.
 
